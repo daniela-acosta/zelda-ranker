@@ -1,13 +1,14 @@
-import {Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import './App.css';
+// import "./App.css";
+import Home from "./views/Home";
+import GameDetail from "./views/GameDetail";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Scalero Project
-      </header>
+      <Route path="/" exact component={Home} />
+      <Route path="/:id" component={GameDetail} />
     </div>
   );
 }
