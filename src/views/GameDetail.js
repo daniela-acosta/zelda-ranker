@@ -7,9 +7,10 @@ const GameDetail = (props) => {
   let history = useHistory();
   const [currentGame, setCurrentGame] = useState(null);
 
+  // extracts game id from path, finds game data and sets state with it
   useEffect(() => {
     const id = history.location.pathname.split("/")[1];
-    const foundGame = gamesData.find(game => game.id == id);
+    const foundGame = gamesData.find(game => game.id.toString() === id);
     setCurrentGame(foundGame);
   }, [history]);
 

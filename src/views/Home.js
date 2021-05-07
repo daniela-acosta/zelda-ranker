@@ -8,19 +8,18 @@ function Home() {
   const [gridDisplay, setGridDisplay] = useState(true);
 
   const toggleDisplay = () => {
-      setGridDisplay(!gridDisplay);
-  }
+    setGridDisplay(prevState => !prevState);
+  };
 
-//   console.log(props);
   return (
-    <div>
+    <React.Fragment>
       <h1>Best Zelda Games of All Time</h1>
       <p>(that I have played)</p>
       <button onClick={toggleDisplay}>Toggle</button>
-    
-      <GamesGrid games={gamesData} show={gridDisplay}/>
-      <GamesTable games={gamesData} show={!gridDisplay}/>
-    </div>
+
+      <GamesGrid games={gamesData} show={gridDisplay} />
+      <GamesTable games={gamesData} show={!gridDisplay} />
+    </React.Fragment>
   );
 }
 

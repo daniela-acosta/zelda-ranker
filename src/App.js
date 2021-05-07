@@ -3,13 +3,16 @@ import { Route } from "react-router-dom";
 // import "./App.css";
 import Home from "./views/Home";
 import GameDetail from "./views/GameDetail";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <div className="App">
+    // <div className="App">
+    <Layout>
       <Route path="/" exact component={Home} />
       <Route path="/:id" component={GameDetail} />
-    </div>
+    </Layout>
+    // </div>
   );
 }
 

@@ -1,0 +1,22 @@
+.Sidedrawer {
+    width: 280px;
+    height: 100%;
+    position: absolute;
+    z-index: 200;
+    background-color: #ddd;
+    transition: transform 0.4s ease-out;
+}
+
+@media (min-width: 500px) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Closed {
+    transform: translateX(-100%);
+}
