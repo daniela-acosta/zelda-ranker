@@ -1,5 +1,5 @@
 .Toolbar {
-    height: 50px;
+    height: 52px;
     width: 100%;
     padding: 0 20px;
     background-color: #aaa;
@@ -8,6 +8,9 @@
     align-items: center;
     box-sizing: border-box;
     z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 @media(max-width: 499px) {

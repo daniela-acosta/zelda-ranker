@@ -1,8 +1,11 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import styles from "./GamesTable.module.css";
+import GameRow from "./GameRow/GameRow";
 
 const GamesTable = (props) => {
-let history = useHistory();
+  let history = useHistory();
 
   const handleClick = (id) => {
     history.push("/" + id);
@@ -12,13 +15,23 @@ let history = useHistory();
 
   if (props.show) {
     component = (
-      <ol>
-        {props.games.map((game) => (
-          <li key={game.id} onClick={() => handleClick(game.id)}>
-            {game.name}
-          </li>
-        ))}
-      </ol>
+      <table className={styles.GamesTable}>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Like</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.games.map((game) => (
+            <GameRow key={game.id} game={game} clicked={handleClick} />
+          ))}
+        </tbody>
+      </table>
     );
   }
 

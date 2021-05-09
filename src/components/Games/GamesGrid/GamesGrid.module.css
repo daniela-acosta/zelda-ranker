@@ -1,0 +1,19 @@
+/* .GamesGrid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.GamesGrid::after {
+  content: "";
+  flex: auto;
+} */
+
+
+.GamesGrid {
+    padding: 2rem 5rem;
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 6rem);
+    grid-gap: 6rem; 
+    justify-content: space-between; 
+}

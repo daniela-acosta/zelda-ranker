@@ -1,8 +1,11 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import styles from "./GamesGrid.module.css";
+import GameCard from "./GameCard/GameCard";
 
 const GamesGrid = (props) => {
-let history = useHistory();
+  let history = useHistory();
 
   const handleClick = (id) => {
     history.push("/" + id);
@@ -12,13 +15,11 @@ let history = useHistory();
 
   if (props.show) {
     component = (
-      <ul>
+      <div className={styles.GamesGrid}>
         {props.games.map((game) => (
-          <li key={game.id} onClick={() => handleClick(game.id)}>
-            {game.name}
-          </li>
+          <GameCard key={game.id} game={game} clicked={() => handleClick(game.id)} voted={game.voted}/>
         ))}
-      </ul>
+      </div>
     );
   }
 

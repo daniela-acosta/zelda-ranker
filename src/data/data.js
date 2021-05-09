@@ -9,6 +9,7 @@ const gamesData = [
     reviews: [""],
     rank: 1,
     id: 1,
+    voted: null,
   },
   {
     name: "A Link to the Past",
@@ -20,6 +21,7 @@ const gamesData = [
     reviews: [""],
     rank: 2,
     id: 2,
+    voted: null,
   },
   {
     name: "The Wind Waker",
@@ -31,6 +33,7 @@ const gamesData = [
     reviews: [""],
     rank: 3,
     id: 3,
+    voted: null,
   },
   {
     name: "Twilight Princess",
@@ -42,6 +45,7 @@ const gamesData = [
     reviews: [""],
     rank: 4,
     id: 4,
+    voted: null,
   },
   {
     name: "Skyward Sword",
@@ -53,6 +57,7 @@ const gamesData = [
     reviews: [""],
     rank: 5,
     id: 5,
+    voted: null,
   },
   {
     name: "Breath of the Wild",
@@ -64,6 +69,7 @@ const gamesData = [
     reviews: [""],
     rank: 6,
     id: 6,
+    voted: null,
   },
   {
     name: "Majora's Mask",
@@ -75,6 +81,7 @@ const gamesData = [
     reviews: [""],
     rank: 7,
     id: 7,
+    voted: null,
   },
   {
     name: "The Legend of Zelda",
@@ -86,6 +93,7 @@ const gamesData = [
     reviews: [""],
     rank: 8,
     id: 8,
+    voted: null,
   },
   {
     name: "Phantom Hourglass",
@@ -97,6 +105,7 @@ const gamesData = [
     reviews: [""],
     rank: 9,
     id: 9,
+    voted: null,
   },
   {
     name: "Triforce Heroes",
@@ -108,6 +117,7 @@ const gamesData = [
     reviews: [""],
     rank: 10,
     id: 10,
+    voted: null,
   },
 
 ];

@@ -1,0 +1,26 @@
+.GameCard {
+  width: 12rem;
+  /* max-width: 300px; */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.GameCard img {
+  max-width: 100%;
+  max-height: 70%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.Information {
+  margin: 5px 15px;
+  height: 60%;
+  text-align: center;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import styles from "./Layout.module.css";
 import Sidedrawer from "../Navigation/Sidedrawer/Sidedrawer";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
 
@@ -18,7 +19,7 @@ function Layout(props) {
         <React.Fragment>
             <Sidedrawer show={showSidedrawer} clicked={handleBackdropClick}/>
             <Toolbar clicked={toggleShowSidedrawer}/>
-            <main>{props.children}</main>
+            <main className={styles.Main}>{props.children}</main>
         </React.Fragment>
     );
 }
