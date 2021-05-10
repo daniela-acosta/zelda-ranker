@@ -8,6 +8,11 @@ import GamesTable from "../../components/Games/GamesTable/GamesTable";
 function Home() {
   const [gridDisplay, setGridDisplay] = useState(true);
 
+  // const userVotes =useEffect(() => {
+  //   const userVotes = getUserVotes(gamesData);
+  //   console.log(userVotes);
+  // }, []);
+
   const toggleDisplay = () => {
     setGridDisplay((prevState) => !prevState);
   };
@@ -18,7 +23,7 @@ function Home() {
       <p>(that I have played)</p>
       <button onClick={toggleDisplay}>Toggle</button>
 
-      <GamesGrid games={gamesData} show={gridDisplay} />
+      <GamesGrid games={gamesData} show={gridDisplay}/>
       <GamesTable games={gamesData} show={!gridDisplay} />
     </div>
   );
