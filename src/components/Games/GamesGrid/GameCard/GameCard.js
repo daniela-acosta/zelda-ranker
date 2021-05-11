@@ -1,27 +1,45 @@
-import React from 'react';
+import React from "react";
 
 import styles from "./GameCard.module.css";
-import ocarina from "../../../../images/ocarinaoftime.jpg";
-import VoteSection from './VoteSection/VoteSection';
+import VoteSection from "./VoteSection/VoteSection";
 import Button from "../../../UI/Button/Button";
-// const images = require.context("../../../../images", true, /.jpg$/);
 
 const GameCard = (props) => {
+    const gameName = props.game.name.replace(/\s/g, "").replace("'","").toLowerCase();
+    const image = require("../../../../images/" + gameName + ".jpg").default;
 
-
-    return(
-    <div className={styles.GameCard}>
-        <img src={ocarina} alt="game"/>
-        {/* <img src={images(`./${props.game.name.replace(" ","").toLowerCase()}`)} alt=""></img> */}
-        <div className={styles.Information}>
-            <h4>{props.game.name}</h4>
-            <h2>#{props.rank}</h2>
-            <p>{props.likePercentage}</p>
-            <VoteSection game={props.game} voteState={props.voteState} likes={props.likes} dislikes={props.dislikes}/>
-            <Button clicked={props.clicked} data={props.game.id} text="View"/>
-        </div>
+  return (
+    <div
+      className={`${styles.GameCard} ${props.rank === 1 && styles.first} ${
+        props.rank === 2 && styles.second
+      } ${props.rank === 3 && styles.third} ${
+        props.rank === 4 && styles.fourth
+      } ${props.rank === 5 && styles.fifth} ${
+        props.rank === 6 && styles.sixth
+      } ${props.rank === 7 && styles.seventh} ${
+        props.rank === 8 && styles.eighth
+      } ${props.rank === 9 && styles.ninth} ${
+        props.rank === 10 && styles.tenth
+      }`}
+    >
+      <img src={image} alt="game" />
+      <div className={styles.Information}>
+        <h4>{props.game.name}</h4>
+        <h2>#{props.rank}</h2>
+        <p>{props.likePercentage}</p>
+        <VoteSection
+          game={props.game}
+          liked={props.liked}
+          disliked={props.disliked}
+          likes={props.likes}
+          dislikes={props.dislikes}
+          clickedLike={props.clickedLike}
+          clickedDislike={props.clickedDislike}
+        />
+        <Button clicked={props.clickedView} data={props.game.id} text="View" />
+      </div>
     </div>
-);
-}
+  );
+};
 
 export default GameCard;

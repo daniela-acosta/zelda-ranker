@@ -42,3 +42,23 @@ export const getDislikes = (games, userVotes) => {
   }
   return dislikes;
 };
+
+export const getVoteStates = (userVotes)  => {
+  let voteLikeStates = [];
+  let voteDislikeStates = [];
+  for (const i in userVotes) {
+    if (userVotes[i] === "liked") {
+      voteLikeStates[i] = true;
+      voteDislikeStates[i] = false;
+    } else if (userVotes[i] === "disliked") {
+      voteLikeStates[i] = false;
+      voteDislikeStates[i] = true;
+    } else {
+      voteLikeStates[i] = false;
+      voteDislikeStates[i] = false;
+    }
+    // console.log("run function")
+    // console.log(voteLikeStates, voteDislikeStates)
+}
+return [voteLikeStates, voteDislikeStates];
+}

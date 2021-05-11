@@ -24,3 +24,41 @@
   height: 60%;
   text-align: center;
 }
+
+.GameCard.first {
+  order: 1;
+}
+
+.second {
+  order: 2;
+}
+
+.third {
+  order: 3;
+}
+
+.fourth {
+  order: 4;
+}
+
+.fifth {
+  order: 5;
+}
+
+.sixth {
+  order: 6;
+}
+
+.seventh {
+  order: 7;
+}
+
+.eighth {
+  order: 8;
+}
+.ninth {
+  order: 9;
+}
+.tenth {
+  order: 10;
+}
