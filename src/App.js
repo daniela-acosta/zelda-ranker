@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 
 // import "./App.css";
 import Home from "./views/Home/Home";
-import GameDetail from "./views/GameDetail";
+import GameDetail from "./views/GameDetail/GameDetail";
 import Layout from "./components/Layout/Layout";
 
 function App() {

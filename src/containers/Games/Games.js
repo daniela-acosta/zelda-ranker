@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import styles from "./GamesGrid.module.css";
+import styles from "./Games.module.css";
 import {
   getLikes,
   getUserVotes,
   getDislikes,
   getRankings,
   getVoteStates,
-} from "../../../helpers/rankingHelpers";
-import GameCard from "./GameCard/GameCard";
+} from "../../helpers/rankingHelpers";
+import GameCard from "../../components/Games/GamesGrid/GameCard/GameCard";
+import GameRow from "../../components/Games/GamesTable/GameRow/GameRow";
+import Button from "../../components/UI/Button/Button";
 
-const GamesGrid = (props) => {
+const Games = (props) => {
   let history = useHistory();
   const [liked, setLiked] = useState([
     false,
@@ -38,20 +40,18 @@ const GamesGrid = (props) => {
     false,
   ]);
 
+  const [displayGrid, setDisplayGrid] = useState(true);
+
   // const userVotes = useCallback(() => getUserVotes(props.games), [props.games]);
   const userVotes = getUserVotes(props.games);
   const likes = getLikes(props.games, userVotes);
   const dislikes = getDislikes(props.games, userVotes);
   const [rankings, likePercentage] = getRankings(props.games, likes, dislikes);
 
-  console.log(rankings);
-
   useEffect(() => {
     setLiked(getVoteStates(userVotes)[0]);
     setDisliked(getVoteStates(userVotes)[1]);
   }, []);
-
-  console.log(liked, disliked);
 
   const handleClickLike = (gameId) => {
     setLiked((prevState) => {
@@ -103,13 +103,18 @@ const GamesGrid = (props) => {
     history.push("/" + id);
   };
 
-  let component = null;
+  const handleToggleDisplay = () => {
+    setDisplayGrid((prevState) => !prevState);
+  };
 
-  if (props.show) {
+  let component = <h1>loading...</h1>;
+  let text;
+
+  if (displayGrid) {
+    text = "View as table";
     component = (
       <div className={styles.GamesGrid}>
         {props.games.map((game) => {
-          
           return (
             <GameCard
               key={game.id}
@@ -124,15 +129,56 @@ const GamesGrid = (props) => {
               clickedLike={() => handleClickLike(game.id)}
               clickedDislike={() => handleClickDislike(game.id)}
               order={rankings[game.id]}
-              
             />
           );
         })}
       </div>
     );
+  } else {
+    text = "View as grid";
+    // console.log(props.games)
+    component = (
+      <div className={styles.GamesTable}>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Image</th>
+              <th>Vote</th>
+              <th>Name</th>
+              <th>Year</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.games.map((game) => (
+              <GameRow
+                key={game.id}
+                game={game}
+                likePercentage={likePercentage[game.id]}
+                rank={rankings[game.id]}
+                likes={likes[game.id]}
+                dislikes={dislikes[game.id]}
+                clickedView={() => handleClickView(game.id)}
+                liked={liked[game.id]}
+                disliked={disliked[game.id]}
+                clickedLike={() => handleClickLike(game.id)}
+                clickedDislike={() => handleClickDislike(game.id)}
+                order={rankings[game.id]}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
-  return component;
+  return (
+    <div className={styles.Games}>
+      <Button clicked={() => handleToggleDisplay()} text={text} />
+      {component}
+    </div>
+  );
 };
 
-export default GamesGrid;
+export default Games;

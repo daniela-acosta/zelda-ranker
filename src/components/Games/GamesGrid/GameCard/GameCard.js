@@ -1,13 +1,13 @@
 import React from "react";
 
 import styles from "./GameCard.module.css";
-import VoteSection from "./VoteSection/VoteSection";
+import VoteSection from "../../VoteSection/VoteSection";
 import Button from "../../../UI/Button/Button";
 
 const GameCard = (props) => {
     const gameName = props.game.name.replace(/\s/g, "").replace("'","").toLowerCase();
     const image = require("../../../../images/" + gameName + ".jpg").default;
-
+    // console.log("[GAME CARD]", props);
   return (
     <div
       className={`${styles.GameCard} ${props.rank === 1 && styles.first} ${

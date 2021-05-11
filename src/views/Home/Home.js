@@ -1,30 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Home.module.css";
 import gamesData from "../../data/data";
-import GamesGrid from "../../components/Games/GamesGrid/GamesGrid";
-import GamesTable from "../../components/Games/GamesTable/GamesTable";
+import Games from "../../containers/Games/Games";
 
 function Home() {
-  const [gridDisplay, setGridDisplay] = useState(true);
-
-  // const userVotes =useEffect(() => {
-  //   const userVotes = getUserVotes(gamesData);
-  //   console.log(userVotes);
-  // }, []);
-
-  const toggleDisplay = () => {
-    setGridDisplay((prevState) => !prevState);
-  };
-
   return (
     <div className={styles.Home}>
-      <h1>Best Zelda Games of All Time</h1>
-      <p>(that I have played)</p>
-      <button onClick={toggleDisplay}>Toggle</button>
-
-      <GamesGrid games={gamesData} show={gridDisplay}/>
-      <GamesTable games={gamesData} show={!gridDisplay} />
+      <h1>Best Zelda Games</h1>
+      <Games games={gamesData} />
     </div>
   );
 }

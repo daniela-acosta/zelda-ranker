@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import styles from "./VoteSection.module.css";
-import Icon from "../../../../UI/Icon/Icon";
+import Icon from "../../UI/Icon/Icon";
 
 const VoteSection = (props) => {
+  // console.log("[VOTE SECTION]", props);
 
   return (
     <div className={styles.VoteSection}>
