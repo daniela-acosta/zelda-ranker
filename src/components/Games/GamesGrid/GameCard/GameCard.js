@@ -5,9 +5,12 @@ import VoteSection from "../../VoteSection/VoteSection";
 import Button from "../../../UI/Button/Button";
 
 const GameCard = (props) => {
-    const gameName = props.game.name.replace(/\s/g, "").replace("'","").toLowerCase();
-    const image = require("../../../../images/" + gameName + ".jpg").default;
-    // console.log("[GAME CARD]", props);
+  const gameName = props.game.name
+    .replace(/\s/g, "")
+    .replace("'", "")
+    .toLowerCase();
+  const image = require("../../../../images/" + gameName + ".jpg").default;
+  // console.log("[GAME CARD]", props);
   return (
     <div
       className={`${styles.GameCard} ${props.rank === 1 && styles.first} ${
@@ -24,9 +27,12 @@ const GameCard = (props) => {
     >
       <img src={image} alt="game" />
       <div className={styles.Information}>
-        <h4>{props.game.name}</h4>
+        <h3>{props.game.name}</h3>
         <h2>#{props.rank}</h2>
-        <p>{props.likePercentage}</p>
+        <p>
+          <span>{Math.round(props.likePercentage * 100)}% </span> 
+          like this game
+        </p>
         <VoteSection
           game={props.game}
           liked={props.liked}

@@ -17,7 +17,7 @@ const Sidedrawer = (props) => {
       <div className={classes.join(" ")}>
         <Logo />
         <nav>
-          <NavItems />
+          <NavItems clicked={props.clicked}/>
         </nav>
       </div>
     </React.Fragment>

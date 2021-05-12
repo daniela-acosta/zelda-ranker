@@ -3,11 +3,11 @@ import React from "react";
 import styles from "./NavItems.module.css";
 import NavItem from "./NavItem/NavItem";
 
-const NavItems = () => {
+const NavItems = (props) => {
   return (
     <ul className={styles.NavItems}>
-      <NavItem link="/">Home</NavItem>
-      <NavItem link="/2">About</NavItem>
+      <NavItem link="/" clicked={props.clicked}>Home</NavItem>
+      <NavItem link="/about" clicked={props.clicked}>About</NavItem>
     </ul>
   );
 };

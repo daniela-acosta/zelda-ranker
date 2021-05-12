@@ -1,9 +1,7 @@
 .GameCard {
-  width: 12rem;
-  /* max-width: 300px; */
-  margin: 10px;
+  width: 16rem;
+  margin: 15px;
   border: 1px solid #ccc;
-  border-radius: 8px;
   background-color: #eee;
   display: flex;
   justify-content: center;
@@ -12,20 +10,26 @@
 }
 
 .GameCard img {
-  max-width: 100%;
-  max-height: 70%;
-  height: 150px;
+  width: 16rem;
+  height: 16rem;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;
 }
 
 .Information {
-  margin: 5px 15px;
+  margin: 0.5rem 1rem 1.2rem 1rem;
   height: 60%;
   text-align: center;
 }
 
-.GameCard.first {
+.Information p {
+  font-size: 0.7rem;
+}
+
+.Information span {
+  font-size: 0.8rem;
+}
+
+.first {
   order: 1;
 }
 

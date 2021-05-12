@@ -11,13 +11,13 @@ function Layout(props) {
         setShowSidedrawer(prevState => !prevState);
     }
 
-    const handleBackdropClick = () => {
+    const handleCloseSidedrawer = () => {
         setShowSidedrawer(false);
     }
 
     return (
         <React.Fragment>
-            <Sidedrawer show={showSidedrawer} clicked={handleBackdropClick}/>
+            <Sidedrawer show={showSidedrawer} clicked={() => handleCloseSidedrawer()}/>
             <Toolbar clicked={toggleShowSidedrawer}/>
             <main className={styles.Main}>{props.children}</main>
         </React.Fragment>

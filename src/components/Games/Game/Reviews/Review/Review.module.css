@@ -1,0 +1,9 @@
+.Review {
+    border: 1px solid #aaa;
+    background-color: #eee;
+    margin: 0.5rem 0;
+}
+
+.Review p {
+    padding: 0 1rem;
+}

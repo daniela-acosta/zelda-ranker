@@ -1,7 +1,8 @@
 import React from "react";
+import styles from "./Loading.module.css";
 
-const Spinner = () => {
-    return <p>loading...</p>
+const Loading = () => {
+    return <div className={styles.loader}>...Loading</div>
 }
 
-export default Spinner;
+export default Loading;

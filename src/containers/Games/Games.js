@@ -136,20 +136,9 @@ const Games = (props) => {
     );
   } else {
     text = "View as grid";
-    // console.log(props.games)
     component = (
       <div className={styles.GamesTable}>
         <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Image</th>
-              <th>Vote</th>
-              <th>Name</th>
-              <th>Year</th>
-              <th>View</th>
-            </tr>
-          </thead>
           <tbody>
             {props.games.map((game) => (
               <GameRow
@@ -175,7 +164,9 @@ const Games = (props) => {
 
   return (
     <div className={styles.Games}>
-      <Button clicked={() => handleToggleDisplay()} text={text} />
+      <div className={styles.Wrapper}>
+        <Button clicked={() => handleToggleDisplay()} text={text} />
+      </div>
       {component}
     </div>
   );

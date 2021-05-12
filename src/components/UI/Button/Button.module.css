@@ -1,0 +1,19 @@
+.Button {
+  width: 120px;
+  height: 40px;
+  border: 1px solid rgb(18, 94, 81);
+  background-color: rgba(23, 116, 100, 1);
+  color: whitesmoke;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.Button:hover {
+  background-color: rgb(18, 94, 81);
+}
+
+@media (max-width: 499px) {
+  .Button {
+    width: 100%;
+  }
+}

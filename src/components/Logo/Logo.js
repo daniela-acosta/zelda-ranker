@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 
 const Logo = () => {
     return (
-        <h3 className={styles.Logo}>myZeldaRank</h3>
+        <h3 className={styles.Logo}>Zelda Ranks</h3>
     );
 }
 

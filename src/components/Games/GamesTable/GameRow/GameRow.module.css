@@ -1,0 +1,22 @@
+.GameRow {
+    height: 15rem;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-content: space-between;
+}
+
+.GameRow img {
+    height: 10rem;
+    width: 7rem;
+    object-fit: cover;
+}
+
+
+.Cell {
+    min-width: 10rem;
+    min-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
