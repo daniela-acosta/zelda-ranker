@@ -30,7 +30,7 @@ const GameCard = (props) => {
         <h3>{props.game.name}</h3>
         <h2>#{props.rank}</h2>
         <p>
-          <span>{Math.round(props.likePercentage * 100)}% </span> 
+          <span>{Math.round(props.likePercentage * 100)}% </span>
           like this game
         </p>
         <VoteSection

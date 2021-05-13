@@ -1,22 +1,38 @@
 .GameRow {
-    height: 15rem;
-    width: 100%;
-    border-top: 1px solid #ccc;
-    display: flex;
-    align-content: space-between;
+  height: 15rem;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  display: flex;
+  align-content: space-between;
+}
+
+.GameRow:last-of-type {
+  border-bottom: 1px solid #ccc;
 }
 
 .GameRow img {
-    height: 10rem;
-    width: 7rem;
-    object-fit: cover;
+  height: 10rem;
+  width: 7rem;
+  object-fit: cover;
 }
 
-
 .Cell {
-    min-width: 10rem;
-    min-height: 15rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-width: 10rem;
+  min-height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Text {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 499px) {
+  .Cell {
+    width: 70px;
+  }
+  /* .GameRow {
+        width: 80%;
+    } */
 }

@@ -18,8 +18,8 @@
   align-items: center;
   width: auto;
   justify-content: center;
+  table-layout: fixed;
 }
-
 
 /* .GamesGrid {
   display: flex;
@@ -38,4 +38,11 @@
   grid-template-columns: repeat(auto-fill, 11rem);
   grid-gap: 6rem;
   justify-content: space-between;
+}
+
+@media (max-width: 499px) {
+  .GamesTable {
+    overflow: scroll;
+    padding: 0;
+  }
 }

@@ -31,8 +31,8 @@ const GameRow = (props) => {
         />
       </td>
 
-      <td className={styles.Cell}>{props.game.name}</td>
-      <td className={styles.Cell}>{props.game.year}</td>
+      <td className={`${styles.Cell} ${styles.Text}`}>{props.game.name}</td>
+      <td className={`${styles.Cell} ${styles.Text}`}>{props.game.year}</td>
       <td className={styles.Cell}>
         <Button clicked={props.clickedView} text="View" data={props.game.id} />
       </td>

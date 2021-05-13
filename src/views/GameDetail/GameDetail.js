@@ -3,8 +3,7 @@ import { useHistory } from "react-router";
 
 import styles from "./GameDetail.module.css";
 import gamesData from "../../data/data";
-import Spinner from "../../components/UI/Loading/Loading";
-// import VoteSection from "../../components/Games/VoteSection/VoteSection";
+import VoteSection from "../../components/Games/VoteSection/VoteSection";
 import Reviews from "../../components/Games/Game/Reviews/Reviews";
 
 const GameDetail = (props) => {
@@ -16,9 +15,11 @@ const GameDetail = (props) => {
     const id = history.location.pathname.split("/")[1];
     const foundGame = gamesData.find((game) => game.id.toString() === id);
     setCurrentGame(foundGame);
-  }, [history]);
+  }, [history.location.pathname]);
 
-  let component = <Spinner />;
+  console.log(props);
+
+  let component = null;
 
   if (currentGame) {
     const gameName = currentGame.name
@@ -31,25 +32,32 @@ const GameDetail = (props) => {
     component = (
       <div className={styles.GameDetail}>
         <section className={styles.Information}>
-          <div className={styles.Title}>
-            <h2>Rank:</h2>
-            <h2>6</h2>
+          <div className={styles.First}>
+            <h2>#{props.rank}</h2>
           </div>
-          <div>
+          <div className={styles.Second}>
             <img src={image} alt="game" />
-            {/* <VoteSection/> */}
-            <p>vote section</p>
-            <p>vote things</p>
-            <p>votes</p>
+            <VoteSection
+              game={props.game}
+              liked={props.liked}
+              disliked={props.disliked}
+              likes={props.likes}
+              dislikes={props.dislikes}
+              clickedLike={props.clickedLike}
+              clickedDislike={props.clickedDislike}
+            />
           </div>
-          <div>
+          <div className={styles.Third}>
             <h1>{currentGame.name}</h1>
-            <p>75% likes</p>
+            <p>
+              <span>{Math.round(props.likePercentage * 100)}% </span>
+              of voters like this game
+            </p>
             <h4>Description</h4>
             <p>{currentGame.description}</p>
           </div>
         </section>
-        <Reviews gameId={currentGame.id}/>
+        <Reviews gameId={currentGame.id} />
       </div>
     );
   }

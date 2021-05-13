@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { Route, useHistory } from "react-router-dom";
 
 import styles from "./Games.module.css";
 import {
@@ -9,9 +9,11 @@ import {
   getRankings,
   getVoteStates,
 } from "../../helpers/rankingHelpers";
+import data from "../../data/data";
 import GameCard from "../../components/Games/GamesGrid/GameCard/GameCard";
 import GameRow from "../../components/Games/GamesTable/GameRow/GameRow";
 import Button from "../../components/UI/Button/Button";
+import GameDetail from "../../views/GameDetail/GameDetail";
 
 const Games = (props) => {
   let history = useHistory();
@@ -42,7 +44,7 @@ const Games = (props) => {
 
   const [displayGrid, setDisplayGrid] = useState(true);
 
-  // const userVotes = useCallback(() => getUserVotes(props.games), [props.games]);
+  // const initialUserVotes = useCallback(() => getUserVotes(data), []);
   const userVotes = getUserVotes(props.games);
   const likes = getLikes(props.games, userVotes);
   const dislikes = getDislikes(props.games, userVotes);
@@ -51,6 +53,7 @@ const Games = (props) => {
   useEffect(() => {
     setLiked(getVoteStates(userVotes)[0]);
     setDisliked(getVoteStates(userVotes)[1]);
+    alert("change")
   }, []);
 
   const handleClickLike = (gameId) => {
@@ -107,41 +110,19 @@ const Games = (props) => {
     setDisplayGrid((prevState) => !prevState);
   };
 
-  let component = <h1>loading...</h1>;
+  let component = null;
   let text;
+  let path = history.location.pathname;
+  let pathId = history.location.pathname.split("/")[1];
 
-  if (displayGrid) {
-    text = "View as table";
-    component = (
-      <div className={styles.GamesGrid}>
-        {props.games.map((game) => {
-          return (
-            <GameCard
-              key={game.id}
-              game={game}
-              likePercentage={likePercentage[game.id]}
-              rank={rankings[game.id]}
-              likes={likes[game.id]}
-              dislikes={dislikes[game.id]}
-              clickedView={() => handleClickView(game.id)}
-              liked={liked[game.id]}
-              disliked={disliked[game.id]}
-              clickedLike={() => handleClickLike(game.id)}
-              clickedDislike={() => handleClickDislike(game.id)}
-              order={rankings[game.id]}
-            />
-          );
-        })}
-      </div>
-    );
-  } else {
-    text = "View as grid";
-    component = (
-      <div className={styles.GamesTable}>
-        <table>
-          <tbody>
-            {props.games.map((game) => (
-              <GameRow
+  if (path === "/") {
+    if (displayGrid) {
+      text = "View as table";
+      component = (
+        <div className={styles.GamesGrid}>
+          {props.games.map((game) => {
+            return (
+              <GameCard
                 key={game.id}
                 game={game}
                 likePercentage={likePercentage[game.id]}
@@ -155,19 +136,63 @@ const Games = (props) => {
                 clickedDislike={() => handleClickDislike(game.id)}
                 order={rankings[game.id]}
               />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
+            );
+          })}
+        </div>
+      );
+    } else {
+      text = "View as grid";
+      component = (
+        <div className={styles.GamesTable}>
+          <table>
+            <tbody>
+              {props.games.map((game) => (
+                <GameRow
+                  key={game.id}
+                  game={game}
+                  likePercentage={likePercentage[game.id]}
+                  rank={rankings[game.id]}
+                  likes={likes[game.id]}
+                  dislikes={dislikes[game.id]}
+                  clickedView={() => handleClickView(game.id)}
+                  liked={liked[game.id]}
+                  disliked={disliked[game.id]}
+                  clickedLike={() => handleClickLike(game.id)}
+                  clickedDislike={() => handleClickDislike(game.id)}
+                  order={rankings[game.id]}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
   }
 
+  let button = null;
+  if (path === "/") {
+    button = <Button clicked={() => handleToggleDisplay()} text={text} />;
+  }
+
+  console.log("HEREEEEE", pathId)
   return (
     <div className={styles.Games}>
-      <div className={styles.Wrapper}>
-        <Button clicked={() => handleToggleDisplay()} text={text} />
-      </div>
+      <div className={styles.Wrapper}>{button}</div>
       {component}
+      <Route>
+        <GameDetail
+          exact
+          path="/:id"
+          likePercentage={likePercentage[pathId]}
+          rank={rankings[pathId]}
+          likes={likes[pathId]}
+          dislikes={dislikes[pathId]}
+          liked={liked[pathId]}
+          disliked={disliked[pathId]}
+          clickedLike={() => handleClickLike(pathId)}
+          clickedDislike={() => handleClickDislike(pathId)}
+        />
+      </Route>
     </div>
   );
 };
