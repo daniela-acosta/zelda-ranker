@@ -49,7 +49,7 @@ const GameDetail = (props) => {
             <p>{currentGame.description}</p>
           </div>
         </section>
-        <Reviews />
+        <Reviews gameId={currentGame.id}/>
       </div>
     );
   }

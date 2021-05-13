@@ -13,4 +13,9 @@
 .Form textarea {
     border: 1px solid #aaa;
     background-color: #eee;
+    text-align: start;
+    font-family: inherit;
+    word-spacing: 0.2rem;
+    height: 50px;
+    
 }
